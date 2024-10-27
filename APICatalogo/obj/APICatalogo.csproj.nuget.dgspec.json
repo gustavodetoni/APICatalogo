@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\APICatalogo.csproj": {}
+    "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\APICatalogo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\APICatalogo.csproj": {
+    "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\APICatalogo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
+        "projectUniqueName": "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\APICatalogo.csproj",
         "projectName": "APICatalogo",
-        "projectPath": "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
-        "packagesPath": "C:\\Users\\Fastcash\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\obj\\",
+        "projectPath": "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\APICatalogo.csproj",
+        "packagesPath": "C:\\Users\\Toni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Fastcash\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Toni\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -46,6 +46,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.10, )"
