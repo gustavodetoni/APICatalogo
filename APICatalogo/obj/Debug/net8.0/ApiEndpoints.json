@@ -1,6 +1,26 @@
 [
   {
     "ContainingType": "APICatalogo.Controllers.ProdutosController",
+    "Method": "Get",
+    "RelativePath": "api/Produtos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[APICatalogo.Models.Produto, APICatalogo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "APICatalogo.Controllers.ProdutosController",
     "Method": "Post",
     "RelativePath": "api/Produtos",
     "HttpMethod": "POST",
@@ -81,32 +101,18 @@
   },
   {
     "ContainingType": "APICatalogo.Controllers.ProdutosController",
-    "Method": "Get",
-    "RelativePath": "api/Produtos/all",
+    "Method": "GetProdutosPorCategorias",
+    "RelativePath": "api/Produtos/produtos/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
+    "Parameters": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[APICatalogo.Models.Produto, APICatalogo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
-    ]
-  },
-  {
-    "ContainingType": "APICatalogo.Controllers.ProdutosController",
-    "Method": "Get2",
-    "RelativePath": "api/Produtos/async",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[APICatalogo.Models.Produto, APICatalogo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -148,7 +154,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "categorias",
+        "Name": "categoria",
         "Type": "APICatalogo.Models.Categoria",
         "IsRequired": true
       }

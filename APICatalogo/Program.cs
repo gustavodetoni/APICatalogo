@@ -2,6 +2,7 @@ using APICatalogo.Context;
 using APICatalogo.Extensions;
 using APICatalogo.Filters;
 using APICatalogo.Logging;
+using APICatalogo.Repositories;
 using APICatalogo.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,6 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add(typeof(ApiExceptionFilter));
@@ -28,11 +28,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     ServerVersion.AutoDetect(mySqlConnection)));
 
 builder.Services.AddScoped<ApiLoggingFilter>();
-builder.Services.AddTransient<IMeuServico, MeuServico>();
-builder.Services.Configure<ApiBehaviorOptions>(options =>
-{
-    options.DisableImplicitFromServicesParameters = true;
-});
+
+builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+// builder.Services.AddTransient<IMeuServico, MeuServico>();
+// builder.Services.Configure<ApiBehaviorOptions>(options =>
+// {
+//    options.DisableImplicitFromServicesParameters = true;
+// });
 
 
 builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
@@ -42,8 +48,8 @@ builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderCon
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-app.ConfigureExeptionHandler(); // Agora em todos os ambientes
+
+app.ConfigureExeptionHandler(); 
 
 if (app.Environment.IsDevelopment())
 {

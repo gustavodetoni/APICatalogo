@@ -15,6 +15,25 @@
           }
         }
       },
+      "Microsoft.AspNetCore.OpenApi/8.0.10": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.OpenApi": "1.4.3"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "type": "package",
         "compile": {
@@ -923,6 +942,21 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Microsoft.AspNetCore.OpenApi/8.0.10": {
+      "sha512": "kzYiW/IbSN0xittjplA8eN1wrNcRi3DMalYRrEuF2xyf2Y5u7cGCfgN1oNZ+g3aBQzMKTQwYsY1PeNmC+P0WnA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.openapi/8.0.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll",
+        "lib/net8.0/Microsoft.AspNetCore.OpenApi.xml",
+        "microsoft.aspnetcore.openapi.8.0.10.nupkg.sha512",
+        "microsoft.aspnetcore.openapi.nuspec"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
@@ -2543,6 +2577,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Microsoft.AspNetCore.OpenApi >= 8.0.10",
       "Microsoft.EntityFrameworkCore >= 8.0.10",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.10",
       "Pomelo.EntityFrameworkCore.MySql >= 8.0.2",
@@ -2550,19 +2585,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Fastcash\\.nuget\\packages\\": {}
+    "C:\\Users\\Toni\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
+      "projectUniqueName": "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\APICatalogo.csproj",
       "projectName": "APICatalogo",
-      "projectPath": "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
-      "packagesPath": "C:\\Users\\Fastcash\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\obj\\",
+      "projectPath": "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\APICatalogo.csproj",
+      "packagesPath": "C:\\Users\\Toni\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Fastcash\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Toni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2594,6 +2629,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Microsoft.AspNetCore.OpenApi": {
+            "target": "Package",
+            "version": "[8.0.10, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[8.0.10, )"

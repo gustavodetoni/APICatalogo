@@ -1,7 +1,9 @@
 ﻿using APICatalogo.Context;
 using APICatalogo.Models;
+using APICatalogo.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SqlTypes;
 
@@ -11,19 +13,32 @@ namespace APICatalogo.Controllers
     [ApiController]
     public class ProdutosController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IUnitOfWork _uof;
 
-        public ProdutosController(AppDbContext context)
+        public ProdutosController(IUnitOfWork uof)
         {
-            _context = context;
+            _uof = uof;
         }
 
-        [HttpGet("all")]
+        [HttpGet("produtos/{id}")]
+        public ActionResult<IEnumerable<Produto>> GetProdutosPorCategorias(int id)
+        {
+            var produtos = _uof.ProdutoRepository.GetProdutosPorCategorias(id);
+
+            if (produtos is  null)
+            {
+                return NotFound();
+            }
+
+            return Ok(produtos);
+        }
+
+        [HttpGet]
         public ActionResult<IEnumerable<Produto>> Get()
         {
-            var produtos = _context.Produtos.ToList();
+            var produtos = _uof.ProdutoRepository.GetAll();
 
-            if (!produtos.Any())
+            if (produtos is null)
             {
                 return NotFound("Produtos não encontrados...");
             }
@@ -31,23 +46,16 @@ namespace APICatalogo.Controllers
             return Ok(produtos);
         }
 
-        [HttpGet("async")]
-        public async Task<ActionResult<IEnumerable<Produto>>> Get2()
-        {
-            return await _context.Produtos.AsNoTracking().ToListAsync();
-          
-        }
-
         [HttpGet("{id:int:min(1)}", Name="ObterProduto")]
-        public async Task<ActionResult<Produto>> Get(int id)
+        public ActionResult<Produto> Get(int id)
         {
-            var produto = await _context.Produtos.AsNoTracking().FirstOrDefaultAsync(p => p.ProdutoId == id);
+            var produto = _uof.ProdutoRepository.Get(c=> c.ProdutoId == id);
 
             if (produto == null)
             {
-                return NotFound();
+                return NotFound("Produtos não encontrado");
             }
-            return produto;
+            return Ok(produto);
         }
 
         [HttpPost]
@@ -55,10 +63,12 @@ namespace APICatalogo.Controllers
         {
             if (produto is null)
                 return BadRequest();
-            _context.Produtos.Add(produto);
-            _context.SaveChanges();
 
-            return new CreatedAtRouteResult("ObterProduto", new {id = produto.ProdutoId}, produto);
+            var novoProduto = _uof.ProdutoRepository.Create(produto);
+            _uof.Commit();
+
+            return new CreatedAtRouteResult("ObterProduto", 
+                new {id = novoProduto.ProdutoId}, novoProduto);
         }
 
         [HttpPut]
@@ -69,25 +79,25 @@ namespace APICatalogo.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(produto).State = EntityState.Modified;
-            _context.SaveChanges();
+            var produtoAtualizado = _uof.ProdutoRepository.Update(produto);
+            _uof.Commit();
 
-            return Ok(produto);
+            return Ok(produtoAtualizado);
+            
         }
 
         [HttpDelete("{id:int}")]
         public ActionResult Delete(int id)
         {
-            var produto = _context.Produtos.FirstOrDefault(p => p.ProdutoId == id);
-            if (produto == null)
-            {
-                return NotFound("Produto não localizado");
-            }
+            var produto = _uof.ProdutoRepository.Get(c=> c.ProdutoId==id);
 
-            _context.Produtos.Remove(produto);
-            _context.SaveChanges();
+            if (produto is null)
+                return NotFound("Produto nao encontrado...");
 
-            return Ok(produto);
+            var produtoDeletado = _uof.ProdutoRepository.Delete(produto);
+            _uof.Commit();
+
+            return Ok(produtoDeletado);
         }
     }
 }

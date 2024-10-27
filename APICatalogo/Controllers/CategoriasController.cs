@@ -1,6 +1,7 @@
 ﻿using APICatalogo.Context;
 using APICatalogo.Filters;
 using APICatalogo.Models;
+using APICatalogo.Repositories;
 using APICatalogo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,16 +13,17 @@ namespace APICatalogo.Controllers
     [ApiController]
     public class CategoriasController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IUnitOfWork _uof;
+
         private readonly IConfiguration _configuration;
 
         private readonly ILogger _logger;
 
-        public CategoriasController(AppDbContext context, IConfiguration configuration, ILogger<CategoriasController> logger)
+        public CategoriasController(IUnitOfWork uof, IConfiguration configuration, ILogger<CategoriasController> logger)
         {
-            _context = context;
             _configuration = configuration;
             _logger = logger;
+            _uof = uof;
         }
 
         [HttpGet("LerArquivoConfiguracao")]
@@ -51,7 +53,8 @@ namespace APICatalogo.Controllers
         [HttpGet("produtos")]
         public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
         {
-            return _context.Categorias.Include(p=> p.Produtos).ToList();
+            var categorias = _uof.CategoriaRepository.GetAll();
+            return Ok(categorias);
         }
 
         [HttpGet]
@@ -61,46 +64,36 @@ namespace APICatalogo.Controllers
 
             _logger.LogInformation("==================== api/categorias/produtos ======================");
 
-            try
-            {
-                var categorias = _context.Categorias.ToList();
-
-                if (!categorias.Any())
-                {
-                    return NotFound($"Categorias não encontrados...");
-                }
-
-                return Ok(categorias);
-            }
-            catch(Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                                "Ocorreu um problema ao tratar a sua solicitação.");
-                
-            }
+            var categorias = _uof.CategoriaRepository.GetAll();
+            return Ok(categorias);
         }
 
         [HttpGet("{id:int}", Name = "ObterCategoria")]
         public ActionResult<Categoria> Get(int id)
         {
             _logger.LogInformation("==================== api/categorias/{id} ======================");
-            var categorias = _context.Categorias.FirstOrDefault(p => p.CategoriaId == id);
-            if (categorias == null)
+            var categoria = _uof.CategoriaRepository.Get(c=> c.CategoriaId == id);
+            if (categoria is null)
             {
+                _logger.LogWarning($"Dados invalidos...");
                 return NotFound();
             }
-            return categorias;
+            return Ok(categoria);
         }
 
         [HttpPost]
-        public ActionResult Post(Categoria categorias)
+        public ActionResult Post(Categoria categoria)
         {
-            if (categorias is null)
-                return BadRequest();
-            _context.Categorias.Add(categorias);
-            _context.SaveChanges();
+            if (categoria is null)
+            {
+                _logger.LogWarning($"Dados invalidos...");
+                return BadRequest("Dados invalidos");
+            }
 
-            return new CreatedAtRouteResult("ObterCategoria", new { id = categorias.CategoriaId }, categorias);
+            var categoriaCriada = _uof.CategoriaRepository.Create(categoria);
+            _uof.Commit();
+
+            return new CreatedAtRouteResult("ObterCategoria", new { id = categoriaCriada.CategoriaId }, categoriaCriada);
         }
 
         [HttpPut]
@@ -108,29 +101,29 @@ namespace APICatalogo.Controllers
         {
             if (id != categorias.CategoriaId)
             {
-                return BadRequest();
+                _logger.LogWarning($"Dados invalidos...");
+                return BadRequest("Dados invalidos");
             }
 
-            _context.Entry(categorias).State = EntityState.Modified;
-            _context.SaveChanges();
-
+            _uof.CategoriaRepository.Update(categorias);
+            _uof.Commit();
             return Ok(categorias);
         }
 
         [HttpDelete("{id:int}")]
         public ActionResult<Categoria> Delete(int id)
         {
-            var categorias = _context.Categorias.FirstOrDefault(p => p.CategoriaId == id);
+            var categorias = _uof.CategoriaRepository.Get(c=> c.CategoriaId == id);
 
-            if (categorias == null)
+            if (categorias is null)
             {
-                return NotFound("Categoria não localizado");
+                _logger.LogWarning($"Categoria com id = {id} não encontrado...");
+                return BadRequest($"Categoria com id = {id} não encontrado...");
             }
 
-            _context.Categorias.Remove(categorias);
-            _context.SaveChanges();
-
-            return Ok(categorias);
+            var categoriaExcluida = _uof.CategoriaRepository.Delete(categorias);
+            _uof.Commit();
+            return Ok(categoriaExcluida);
         }
     }
 }
