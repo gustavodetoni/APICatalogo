@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\APICatalogo.csproj": {}
+    "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\APICatalogo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\APICatalogo.csproj": {
+    "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\APICatalogo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\APICatalogo.csproj",
+        "projectUniqueName": "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
         "projectName": "APICatalogo",
-        "projectPath": "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\APICatalogo.csproj",
-        "packagesPath": "C:\\Users\\Toni\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Toni\\Desktop\\FastCash\\EstudoC#\\APICatalogo\\obj\\",
+        "projectPath": "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
+        "packagesPath": "C:\\Users\\Fastcash\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Toni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fastcash\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -46,6 +46,18 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Microsoft.AspNetCore.JsonPatch": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.10, )"

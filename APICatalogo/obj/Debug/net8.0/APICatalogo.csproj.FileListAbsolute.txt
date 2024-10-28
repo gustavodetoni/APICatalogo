@@ -222,3 +222,10 @@ C:\Users\Toni\Desktop\FastCash\EstudoC#\APICatalogo\obj\Debug\net8.0\scopedcss\b
 C:\Users\Toni\Desktop\FastCash\EstudoC#\APICatalogo\obj\Debug\net8.0\APICatal.C7776A93.Up2Date
 C:\Users\Toni\Desktop\FastCash\EstudoC#\APICatalogo\obj\Debug\net8.0\APICatalogo.genruntimeconfig.cache
 C:\Users\Toni\Desktop\FastCash\EstudoC#\APICatalogo\obj\Debug\net8.0\ref\APICatalogo.dll
+C:\Users\Fastcash\Desktop\CursoC#_gustavodetoni\APICatalogo\APICatalogo\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\Fastcash\Desktop\CursoC#_gustavodetoni\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\Fastcash\Desktop\CursoC#_gustavodetoni\APICatalogo\APICatalogo\obj\Debug\net8.0\APICatalogo.sourcelink.json
+C:\Users\Fastcash\Desktop\CursoC#_gustavodetoni\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Fastcash\Desktop\CursoC#_gustavodetoni\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Fastcash\Desktop\CursoC#_gustavodetoni\APICatalogo\APICatalogo\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Fastcash\Desktop\CursoC#_gustavodetoni\APICatalogo\APICatalogo\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
