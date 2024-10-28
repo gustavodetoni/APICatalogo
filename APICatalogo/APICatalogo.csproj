@@ -18,6 +18,9 @@
     </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="X.PagedList" Version="10.5.7" />
+    <PackageReference Include="X.PagedList.EF" Version="10.5.7" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="10.5.7" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jVuNc6sIpOs=",
+  "dgSpecHash": "GsfmYt2POk8=",
   "success": true,
   "projectFilePath": "C:\\Users\\Fastcash\\Desktop\\CursoC#_gustavodetoni\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
   "expectedPackageFiles": [
@@ -54,7 +54,10 @@
     "C:\\Users\\Fastcash\\.nuget\\packages\\system.reflection.metadata\\6.0.1\\system.reflection.metadata.6.0.1.nupkg.sha512",
     "C:\\Users\\Fastcash\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\Fastcash\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
-    "C:\\Users\\Fastcash\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512"
+    "C:\\Users\\Fastcash\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",
+    "C:\\Users\\Fastcash\\.nuget\\packages\\x.pagedlist\\10.5.7\\x.pagedlist.10.5.7.nupkg.sha512",
+    "C:\\Users\\Fastcash\\.nuget\\packages\\x.pagedlist.ef\\10.5.7\\x.pagedlist.ef.10.5.7.nupkg.sha512",
+    "C:\\Users\\Fastcash\\.nuget\\packages\\x.pagedlist.mvc.core\\10.5.7\\x.pagedlist.mvc.core.10.5.7.nupkg.sha512"
   ],
   "logs": []
 }
