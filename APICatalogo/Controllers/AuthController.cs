@@ -202,7 +202,7 @@ namespace APICatalogo.Controllers
 
         [HttpPost]
         [Route("AddUserToRole")]
-        [Authorize(Policy = "SuperAdminOnly")]
+        [Authorize(Policy = "SuperAdminOnly")] 
         public async Task<IActionResult> AddUserToRole(string email, string roleName)
         {
             var user = await _userManager.FindByEmailAsync(email);

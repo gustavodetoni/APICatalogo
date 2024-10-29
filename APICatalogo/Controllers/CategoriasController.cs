@@ -8,16 +8,20 @@ using APICatalogo.Repositories;
 using APICatalogo.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using X.PagedList;
 
 namespace APICatalogo.Controllers
 {
+    [EnableCors("OrigensComAcessoPermitdo")]
     [Route("[controller]")]
     [ApiController]
+    [EnableRateLimiting("fixedwindow")]
     public class CategoriasController : ControllerBase
     {
         private readonly IUnitOfWork _uof;
@@ -113,6 +117,7 @@ namespace APICatalogo.Controllers
             return Ok(categorias);
         }
 
+        [DisableCors] 
         [Authorize]
         [HttpGet]
         [ServiceFilter(typeof(ApiLoggingFilter))]
