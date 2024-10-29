@@ -7,6 +7,7 @@ using APICatalogo.Pagination;
 using APICatalogo.Repositories;
 using APICatalogo.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -112,6 +113,7 @@ namespace APICatalogo.Controllers
             return Ok(categorias);
         }
 
+        [Authorize]
         [HttpGet]
         [ServiceFilter(typeof(ApiLoggingFilter))]
         public async Task<ActionResult<IEnumerable<CategoriaDTO>>> GetAsync()
@@ -183,6 +185,7 @@ namespace APICatalogo.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<CategoriaDTO>> DeleteAsync(int id)
         {
             var categorias = await _uof.CategoriaRepository.GetAsync(c=> c.CategoriaId == id);
