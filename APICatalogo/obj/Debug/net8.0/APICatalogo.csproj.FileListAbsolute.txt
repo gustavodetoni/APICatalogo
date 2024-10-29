@@ -366,3 +366,7 @@ C:\Users\gusta\OneDrive\Área de Trabalho\FastCash\EstudoC#\APICatalogo\APICatal
 C:\Users\gusta\OneDrive\Área de Trabalho\FastCash\EstudoC#\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\gusta\OneDrive\Área de Trabalho\FastCash\EstudoC#\APICatalogo\APICatalogo\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\gusta\OneDrive\Área de Trabalho\FastCash\EstudoC#\APICatalogo\APICatalogo\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\gusta\OneDrive\Área de Trabalho\FastCash\EstudoC#\APICatalogo\APICatalogo\bin\Debug\net8.0\Asp.Versioning.Abstractions.dll
+C:\Users\gusta\OneDrive\Área de Trabalho\FastCash\EstudoC#\APICatalogo\APICatalogo\bin\Debug\net8.0\Asp.Versioning.Http.dll
+C:\Users\gusta\OneDrive\Área de Trabalho\FastCash\EstudoC#\APICatalogo\APICatalogo\bin\Debug\net8.0\Asp.Versioning.Mvc.dll
+C:\Users\gusta\OneDrive\Área de Trabalho\FastCash\EstudoC#\APICatalogo\APICatalogo\bin\Debug\net8.0\Asp.Versioning.Mvc.ApiExplorer.dll
