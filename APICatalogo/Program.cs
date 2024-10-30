@@ -189,13 +189,15 @@ builder.Services.AddAutoMapper(typeof(ProdutoDTOMappingProfile));
 var app = builder.Build();
 
 
-app.ConfigureExeptionHandler(); 
+app.ConfigureExeptionHandler();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
+//if (app.Environment.IsDevelopment())
+//{
+   
+//}
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
