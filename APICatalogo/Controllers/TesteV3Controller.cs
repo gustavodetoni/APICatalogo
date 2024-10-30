@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace APICatalogo.Controllers
+namespace APICatalogo.Controllers   
 {
     [Route("api/teste")]
     [ApiController]

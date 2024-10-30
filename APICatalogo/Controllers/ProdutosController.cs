@@ -17,12 +17,11 @@ namespace APICatalogo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [ApiExplorerSettings(IgnoreApi = true)]
+    //[ApiExplorerSettings(IgnoreApi = true)]
     public class ProdutosController : ControllerBase
     {
         private readonly IUnitOfWork _uof;
         private readonly IMapper _mapper;
-
 
         public ProdutosController(IUnitOfWork uof, IMapper mapper)
         {
@@ -93,12 +92,19 @@ namespace APICatalogo.Controllers
         [Authorize(Policy = "UserOnly")]
         public async Task<ActionResult<IEnumerable<ProdutoDTO>>>  GetAsync()
         {
+
             var produtos = await _uof.ProdutoRepository.GetAllAsync();
 
-            if (produtos is null)
+            if (produtos == null)
             {
-                return NotFound("Produtos não encontrados...");
+                return BadRequest("Erro ao recuperar produtos.");
             }
+
+            if (!produtos.Any())
+            {
+                return NotFound("Nenhum produto encontrado.");
+            }
+
             var produtosDto = _mapper.Map<IEnumerable<ProdutoDTO>>(produtos);
             return Ok(produtosDto);
         }

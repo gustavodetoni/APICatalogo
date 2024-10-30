@@ -23,5 +23,6 @@ namespace APICatalogo.DTOs
         [StringLength(300)]
         public string? ImageUrl { get; set; }
         public int CategoriaId { get; set; }
+        public string ImagemUrl { get; set; }
     }
 }
